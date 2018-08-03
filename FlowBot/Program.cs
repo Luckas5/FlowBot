@@ -80,14 +80,6 @@ namespace FlowBot
             Console.WriteLine("Press any key to continue.");
         }
 
-        //async static void GetEndpointKeys()
-        //{
-        //    var uri = host + service + method2;
-        //    Console.WriteLine("Calling " + uri + ".");
-        //    var response = await Get(uri);
-        //    Console.WriteLine(PrettyPrint(response));
-        //    Console.WriteLine("Press any key to continue.");
-        //}
         static string PrettyPrint(string s)
         {
             var answers= JsonConvert.DeserializeObject<Answers>(s);
@@ -95,23 +87,8 @@ namespace FlowBot
            return JsonConvert.SerializeObject(JsonConvert.DeserializeObject(s));
         }
 
-        //static async void MakeRequest()
-        //{
-        //    var client = new HttpClient();
-        //    var queryString = new Uri("https://westus.api.cognitive.microsoft.com/qnamaker/v4.0/endpointkeys");
-
-        //    // Request headers
-        //    client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", "5f64a6e8-5287-4818-bc37-1e1d14e5b808");
-
-        //    var uri = "https://flowqna.azurewebsites.net/qnamaker/endpointkeys?" + queryString;
-
-        //    var response = await client.GetAsync(uri);
-        //}
-
         static void Main(string[] args)
         {
-           // GetEndpointKeys();
-           // MakeRequest();
             GetAnswers();
             Console.ReadLine();
         }
