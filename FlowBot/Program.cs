@@ -22,15 +22,13 @@ namespace FlowBot
         // NOTE: Replace this with a valid subscription key.
         static string key = "5f64a6e8-5287-4818-bc37-1e1d14e5b808";
 
-        // NOTE: Replace this with a valid knowledge base ID.
-        // Make sure you have published the knowledge base with the
+
         // POST /knowledgebases/{knowledge base ID} method.
         static string kb = "ac32a333-1086-4e85-84b1-74589b0c2c94";
 
         //static string service = "/qnamaker";
         static string method = "/knowledgebases/" + kb + "/generateAnswer/";
-
- 
+        
         static string service = "/qnamaker";
         static string method2 = "/endpointkeys/";
 
@@ -70,7 +68,7 @@ namespace FlowBot
             }
         }
 
-        async static void GetAnswers()
+        async static void GetAnswers(string question)
         {
             var uri = host + service + method;
             Console.WriteLine("Calling " + uri + ".");
@@ -89,7 +87,17 @@ namespace FlowBot
 
         static void Main(string[] args)
         {
-            GetAnswers();
+
+            question = Console.ReadLine();
+            var botQuestion= new BotQuestion()
+            {
+                question = question,
+                top = 3
+            };
+
+            var serialized = JsonConvert.SerializeObject(botQuestion);
+
+            GetAnswers(serialized);
             Console.ReadLine();
         }
     }
